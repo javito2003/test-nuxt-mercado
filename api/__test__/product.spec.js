@@ -3,7 +3,7 @@ const app = require('../app')
 const Product = require('../models/productos');
 
 let id
-let body
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJyb2wiOiJVU0VSIiwiX2lkIjoiNjAyZmZiNzdlNjZmZDk4ZDk0OTE5OWM0IiwibmFtZSI6IlBlcm8ybiIsImVtYWlsIjoiMUAxLmNvbSIsImRhdGUiOiIyMDIxLTAyLTE5VDE3OjU1OjAzLjMwMVoiLCJfX3YiOjB9LCJpYXQiOjE2MTM3NTczMDMsImV4cCI6MTYxNjM0OTMwM30.yun-GdKVQKXG2x8zyTigPQCfkOpEMsvjbleaKiy4ktE'
 
 describe('Create a new product', () => {
     let product
@@ -20,7 +20,7 @@ describe('Create a new product', () => {
     }) 
 
     it('Create a new product', async(done) => {
-        return request(app).post('/api/new-product').send(product).expect(200).then((res) => {
+        return request(app).post('/api/new-product').set('token',token).send(product).expect(200).then((res) => {
             expect(res.body).toBeDefined()
             id = res.body.product._id
             done()
@@ -30,12 +30,12 @@ describe('Create a new product', () => {
 
 describe('Get product/s', () => {
     it('Should return all products', async() => {
-        await request(app).post('/api/products').expect(200).then((res) => {
+        await request(app).post('/api/products').set('token',token).expect(200).then((res) => {
             expect(res.body).toBeDefined()
         })
     });
     it('Should return a product', async () => {
-        await request(app).post(`/api/product/${id}`).expect(200).then(res => {
+        await request(app).post(`/api/product/${id}`).set('token',token).expect(200).then(res => {
             expect(res.body.product).toBeDefined()
         })
     });
@@ -55,7 +55,7 @@ describe('Edit product', () => {
     })
 
     it('Should edit a product', async(done) => {
-        const res = await request(app).post(`/api/edit-product/${id}`).send(newDetails).expect(200)
+        const res = await request(app).post(`/api/edit-product/${id}`).set('token',token).send(newDetails).expect(200)
             console.log(res.body.product);
             done()
     });

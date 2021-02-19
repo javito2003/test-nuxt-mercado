@@ -57,7 +57,7 @@ describe('Login user', () => {
 
 describe('Get user', () => {
     it('Should return a user', async() => {
-        await request(app).post(`/api/data/${id}`).expect(200).then(res => {
+        await request(app).post(`/api/data/${id}`).set('token',token).expect(200).then(res => {
             console.log('Get response = ' + res.body.userData);
         })
     });

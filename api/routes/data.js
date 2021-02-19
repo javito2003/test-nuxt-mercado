@@ -1,11 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
+const {checkAuth} = require('../middleware/authenticacion')
 
 const User = require('../models/user')
 
 //GET user
-router.post('/data/:id',async(req,res) => {
+router.post('/data/:id',checkAuth,async(req,res) => {
     const _id = req.params.id
 
     try {

@@ -1,13 +1,13 @@
 const express = require('express')
 const router = express.Router()
-
+const {checkAuth} = require('../middleware/authenticacion')
 
 const Product = require('../models/productos')
 
 
 //Create a product
 
-router.post('/new-product',async(req,res) => {
+router.post('/new-product',checkAuth,async(req,res) => {
     try {
         const title = req.body.title
         const price = req.body.price
@@ -37,7 +37,7 @@ router.post('/new-product',async(req,res) => {
 
 
 // Get products
-router.post('/products',async(req,res) => {
+router.post('/products',checkAuth,async(req,res) => {
     try {
         const productDB = await Product.find()
         const toSend = {
@@ -56,7 +56,7 @@ router.post('/products',async(req,res) => {
 })
 
 // Get a product
-router.post('/product/:id',async(req,res) => {
+router.post('/product/:id',checkAuth,async(req,res) => {
     const _id = req.params.id
     try {
         const productDB = await Product.findOne({_id})
@@ -77,7 +77,7 @@ router.post('/product/:id',async(req,res) => {
 
 
 //Edit a product
-router.post('/edit-product/:id',async(req,res) => {
+router.post('/edit-product/:id',checkAuth,async(req,res) => {
     const _id = req.params.id
     var body = req.body
     try {
@@ -101,7 +101,7 @@ router.post('/edit-product/:id',async(req,res) => {
 
 
 // Delete a product
-router.post('/delete-product/:id',async(req,res) => {
+router.post('/delete-product/:id',checkAuth,async(req,res) => {
     const _id = req.params.id
     
     try {

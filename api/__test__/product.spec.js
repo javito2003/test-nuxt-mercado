@@ -3,7 +3,7 @@ const app = require('../app')
 const Product = require('../models/productos');
 
 let id
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJyb2wiOiJVU0VSIiwiX2lkIjoiNjAyZmZiNzdlNjZmZDk4ZDk0OTE5OWM0IiwibmFtZSI6IlBlcm8ybiIsImVtYWlsIjoiMUAxLmNvbSIsImRhdGUiOiIyMDIxLTAyLTE5VDE3OjU1OjAzLjMwMVoiLCJfX3YiOjB9LCJpYXQiOjE2MTM3NTczMDMsImV4cCI6MTYxNjM0OTMwM30.yun-GdKVQKXG2x8zyTigPQCfkOpEMsvjbleaKiy4ktE'
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJyb2wiOiJBRE1JTiIsIl9pZCI6IjYwMmZmYjc3ZTY2ZmQ5OGQ5NDkxOTljNCIsIm5hbWUiOiJQZXJvMm4iLCJlbWFpbCI6IjFAMS5jb20iLCJkYXRlIjoiMjAyMS0wMi0xOVQxNzo1NTowMy4zMDFaIiwiX192IjowfSwiaWF0IjoxNjEzNzU3MzAzLCJleHAiOjE2MTYzNDkzMDN9.g-70h_qYVCwrzb81Cw7vQPtQ9YJyZljQEgHvSPAASDY'
 
 describe('Create a new product', () => {
     let product

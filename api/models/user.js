@@ -9,9 +9,10 @@ const roles = {
 
 const userSchema = new Schema({
     name: {type: String, required: [true, 'name is required']},
+    surname: {type: String, required: [true, "surname is required"]},
     email: {type: String,required: [true,'email is required'], unique: true},
     password: {type: String,required: [true, 'Password is required']},
-    rol: {type: String, default: 'USER'},
+    rol: {type: String, default: 'USER', enum: roles},
     date: {type: Date, default: Date.now}
 })
 

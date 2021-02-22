@@ -12,11 +12,13 @@ const User = require('../models/user')
 router.post('/register', async(req,res) => {
     try {
         const name = req.body.name
+        const surname = req.body.surname
         const email = req.body.email
         const password = req.body.password
         const encryptedPassword = bcrypt.hashSync(password,10)
         const newUser= {
             name: name,
+            surname: surname,
             email: email,
             password: encryptedPassword
         }
@@ -26,6 +28,7 @@ router.post('/register', async(req,res) => {
         res.status(201).json(userDB)
         
     } catch (error) {
+        console.log(error);
         res.status(500).json({
             status: "failed",
             message: "Failed to create an user"

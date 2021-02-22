@@ -28,6 +28,7 @@ router.post('/new-product',[checkAuth,checkAdm],async(req,res) => {
         console.log(productDB);
         
     } catch (error) {
+        console.log(error);
         return res.status(500).json({
             status: 'Failed',
             message: "Error to create a product"

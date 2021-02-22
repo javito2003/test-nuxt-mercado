@@ -6,7 +6,7 @@ const {checkAuth} = require('../middleware/authenticacion')
 const User = require('../models/user')
 
 //GET user
-router.post('/data/:id',checkAuth,async(req,res) => {
+router.post('/data/:id',async(req,res) => {
     const _id = req.params.id
 
     try {

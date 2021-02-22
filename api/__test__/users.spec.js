@@ -10,8 +10,10 @@ describe('Create a new user', () => {
     beforeEach(async() => {
         user = {
             name: "Pero2n",
+            surname: "Peronsito",
             email: "1@1.com",
-            password: "1234"
+            password: "1234",
+            rol: "ADMIN"
         }
         await User.deleteMany({})
         await User(user).save
